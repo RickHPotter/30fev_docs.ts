@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import { Home, ChevronRight } from "lucide-react"
 
 import Introduction from "@/pages/Introduction"
-import SignupAndLogin from "@/pages/SignupAndLogin"
+import Signup from "@/pages/Signup"
+import Login from "@/pages/Login"
 import BankAccounts from "@/pages/BankAccounts"
 import UserCards from "@/pages/UserCards"
 import CardTransactions from "@/pages/CardTransactions"
@@ -16,32 +17,36 @@ import Entities from "@/pages/Entities"
 
 // Sidebar menu items
 const sidebarItems = [
-  { label: "Introduction", path: "/introduction" },
-  { label: "Signup and Login", path: "/sign-up-and-log-in" },
-  { label: "Bank Accounts", path: "/bank-accounts" },
-  { label: "User Cards", path: "/user-cards" },
-  { label: "Categories", path: "/categories" },
-  { label: "Entities", path: "/entities" },
-  { label: "Card Transactions", path: "/card-transactions" },
-  { label: "Cash Transactions", path: "/cash-transactions" },
-  { label: "Budgets", path: "/budgets" },
-  { label: "Investments", path: "/investments" },
-  { label: "Donation", path: "/donation" },
+  { label: "Introduction", path: "/30fev_docs.ts/introduction" },
+  { label: "Sign up", path: "/30fev_docs.ts/sign-up" },
+  { label: "Log in", path: "/30fev_docs.ts/log-in" },
+  { label: "Bank Accounts", path: "/30fev_docs.ts/bank-accounts" },
+  { label: "User Cards", path: "/30fev_docs.ts/user-cards" },
+  { label: "Categories", path: "/30fev_docs.ts/categories" },
+  { label: "Entities", path: "/30fev_docs.ts/entities" },
+  { label: "Card Transactions", path: "/30fev_docs.ts/card-transactions" },
+  { label: "Cash Transactions", path: "/30fev_docs.ts/cash-transactions" },
+  { label: "Budgets", path: "/30fev_docs.ts/budgets" },
+  { label: "Investments", path: "/30fev_docs.ts/investments" },
+  { label: "Donation", path: "/30fev_docs.ts/donation" },
 ]
 
 // Breadcrumb component
 function Breadcrumb() {
   const location = useLocation()
   const pathnames = location.pathname.split("/").filter((x) => x)
+  pathnames.shift()
 
   return (
     <nav className="flex items-center text-sm text-gray-500 space-x-2">
-      <Link to="/" className="flex items-center hover:underline">
+      <Link to="/30fev_docs.ts/introduction" className="flex items-center hover:underline">
         <Home className="w-4 h-4" />
       </Link>
+
       {pathnames.map((value, index) => {
         const to = `/${pathnames.slice(0, index + 1).join("/")}`
         const isLast = index === pathnames.length - 1
+
         return (
           <React.Fragment key={to}>
             <ChevronRight className="w-4 h-4" />
@@ -83,17 +88,18 @@ function Content() {
   return (
     <main className="flex-1 px-6 py-8 ml-64">
       <Routes>
-        <Route path="/introduction" element={<Introduction />} />
-        <Route path="/sign-up-and-log-in" element={<SignupAndLogin />} />
-        <Route path="/bank-accounts" element={<BankAccounts />} />
-        <Route path="/user-cards" element={<UserCards />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/entities" element={<Entities />} />
-        <Route path="/card-transactions" element={<CardTransactions />} />
-        <Route path="/cash-transactions" element={<CashTransactions />} />
-        <Route path="/budgets" element={<Budgets />} />
-        <Route path="/investments" element={<Investments />} />
-        <Route path="/donation" element={<Donation />} />
+        <Route path="/30fev_docs.ts/introduction" element={<Introduction />} />
+        <Route path="/30fev_docs.ts/sign-up" element={<Signup />} />
+        <Route path="/30fev_docs.ts/log-in" element={<Login />} />
+        <Route path="/30fev_docs.ts/bank-accounts" element={<BankAccounts />} />
+        <Route path="/30fev_docs.ts/user-cards" element={<UserCards />} />
+        <Route path="/30fev_docs.ts/categories" element={<Categories />} />
+        <Route path="/30fev_docs.ts/entities" element={<Entities />} />
+        <Route path="/30fev_docs.ts/card-transactions" element={<CardTransactions />} />
+        <Route path="/30fev_docs.ts/cash-transactions" element={<CashTransactions />} />
+        <Route path="/30fev_docs.ts/budgets" element={<Budgets />} />
+        <Route path="/30fev_docs.ts/investments" element={<Investments />} />
+        <Route path="/30fev_docs.ts/donation" element={<Donation />} />
 
         <Route path="*" element={
           <section>
