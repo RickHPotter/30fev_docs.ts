@@ -1,8 +1,8 @@
 import React from "react"
 
 const Login: React.FC = () => (
-  <section className="text-lg">
-    <h2 className="text-4xl font-semibold mb-2">🔐 How to Log in</h2>
+  <section className="text-md md:text-lg">
+    <h2 className="text-2xl md:text-4xl font-semibold md:mb-2">🔐 How to Log in</h2>
     <p className="text-gray-700 py-4">
       Once a user has an account, they can log in using their email and password.
     </p>
@@ -24,16 +24,14 @@ const Login: React.FC = () => (
       <li>Click on the <strong>Login</strong> button.</li>
     </ul>
 
+    <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
     <div className="mb-4 rounded overflow-hidden shadow">
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-
       <video
         src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
         muted
         loop
         playsInline
         controls
-        style={{ maxWidth: "75%" }}
       />
     </div>
   </section>

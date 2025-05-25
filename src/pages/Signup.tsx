@@ -1,8 +1,8 @@
 import React from "react"
 
 const Signup: React.FC = () => (
-  <section className="text-lg">
-    <h2 className="text-4xl font-semibold mb-2">🔐 How to Sign Up</h2>
+  <section className="text-md md:text-lg">
+    <h2 className="text-2xl md:text-4xl font-semibold md:mb-2">🔐 How to Sign Up</h2>
     <p className="text-gray-700 py-4">
       To get started, a user needs to have an account. To do that, you need to Sign Up.
     </p>
@@ -31,16 +31,14 @@ const Signup: React.FC = () => (
       <li>Click on the <strong>Sign Up</strong> button.</li>
     </ul>
 
+    <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
     <div className="mb-4 rounded overflow-hidden shadow">
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-
       <video
         src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
         muted
         loop
         playsInline
         controls
-        style={{ maxWidth: "75%" }}
       />
     </div>
   </section>

@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
+import React, { useState, useEffect } from "react"
+import { HashRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
 import { Home, ChevronRight } from "lucide-react"
 
 import Sidebar from "@/components/Sidebar"
@@ -20,11 +20,10 @@ import Entities from "@/pages/Entities"
 function Breadcrumb() {
   const location = useLocation()
   const pathnames = location.pathname.split("/").filter((x) => x)
-  pathnames.shift()
 
   return (
     <nav className="flex items-center text-sm text-gray-500 space-x-2">
-      <Link to="/30fev_docs.ts/introduction" className="flex items-center hover:underline">
+      <Link to="/introduction" className="flex items-center hover:underline">
         <Home className="w-4 h-4" />
       </Link>
 
@@ -53,23 +52,22 @@ function Content({ sidebarWidth }: { sidebarWidth: string }) {
   return (
     <main className={`flex-1 px-6 py-8 ${sidebarWidth}`}>
       <Routes>
-        <Route path="/30fev_docs.ts/introduction" element={<Introduction />} />
-        <Route path="/30fev_docs.ts/sign-up" element={<Signup />} />
-        <Route path="/30fev_docs.ts/log-in" element={<Login />} />
-        <Route path="/30fev_docs.ts/bank-accounts" element={<BankAccounts />} />
-
-        <Route path="/30fev_docs.ts/user-cards" element={<UserCards />} />
-        <Route path="/30fev_docs.ts/categories" element={<Categories />} />
-        <Route path="/30fev_docs.ts/entities" element={<Entities />} />
-        <Route path="/30fev_docs.ts/card-transactions" element={<CardTransactions />} />
-        <Route path="/30fev_docs.ts/cash-transactions" element={<CashTransactions />} />
-        <Route path="/30fev_docs.ts/budgets" element={<Budgets />} />
-        <Route path="/30fev_docs.ts/investments" element={<Investments />} />
-        <Route path="/30fev_docs.ts/donation" element={<Donation />} />
+        <Route path="/introduction" element={<Introduction />} />
+        <Route path="/sign-up" element={<Signup />} />
+        <Route path="/log-in" element={<Login />} />
+        <Route path="/bank-accounts/:section" element={<BankAccounts />} />
+        <Route path="/user-cards/:section" element={<UserCards />} />
+        <Route path="/categories/:section" element={<Categories />} />
+        <Route path="/entities/:section" element={<Entities />} />
+        <Route path="/card-transactions/:section" element={<CardTransactions />} />
+        <Route path="/cash-transactions/:section" element={<CashTransactions />} />
+        <Route path="/budgets/:section" element={<Budgets />} />
+        <Route path="/investments/:section" element={<Investments />} />
+        <Route path="/donation" element={<Donation />} />
 
         <Route path="*" element={
           <section>
-            <p className="text-gray-700 mb-2"> Select a Topic on the Sidebar </p>
+            <p className="text-gray-900 mb-2"> Select a Topic on the Sidebar </p>
           </section>
         } />
       </Routes>
@@ -81,15 +79,21 @@ export default function App() {
   const [collapsed, setCollapsed] = useState(false)
   const sidebarWidth = collapsed ? "ml-16" : "ml-64"
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setCollapsed(true)
+    }
+  }, [])
+
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gray-50">
-        <header className={`bg-white fixed top-0 left-0 w-full shadow px-6 py-4 ${sidebarWidth}`}>
+      <div className="flex flex-col min-h-screen bg-gray-50 noticia-text-regular">
+        <header className={`bg-white fixed z-50 top-0 left-0 w-full shadow px-6 py-4 ${sidebarWidth}`}>
           <Breadcrumb />
-          <h1 className="text-3xl font-bold mt-2 text-gray-900">30/Fev Docs Guide</h1>
+          <h1 className="text-2xl hidden md:block font-bold mt-2 text-gray-900">30/Fev Docs Guide</h1>
         </header>
 
-        <div className="flex flex-1 pt-20">
+        <div className="flex flex-1 pt-6 md:pt-20">
           <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
           <Content sidebarWidth={sidebarWidth} />
         </div>

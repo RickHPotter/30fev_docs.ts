@@ -1,114 +1,121 @@
 import { Link, useLocation } from "react-router-dom"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import type { LucideIcon } from "lucide-react"
 import { Banknote, CreditCard, CircleUser, FolderOpen, HandCoins, Menu, NotebookPen, PiggyBank, User, UserPlus, Wallet, WalletCards } from "lucide-react"
 
-const sidebarStructure = [
-  { label: "Introduction", icon: NotebookPen, path: "/30fev_docs.ts/introduction" },
-  { label: "Sign up", icon: UserPlus, path: "/30fev_docs.ts/sign-up" },
-  { label: "Log in", icon: User, path: "/30fev_docs.ts/log-in" },
+type SidebarItem = {
+  label: string
+  icon?: LucideIcon
+  path: string
+  children?: SidebarItem[]
+}
+
+const sidebarStructure: SidebarItem[] = [
+  { label: "Introduction", icon: NotebookPen, path: "/introduction" },
+  { label: "Sign up", icon: UserPlus, path: "/sign-up" },
+  { label: "Log in", icon: User, path: "/log-in" },
   {
     label: "Bank Accounts",
     icon: Banknote,
-    path: "/30fev_docs.ts/bank-accounts/create",
+    path: "/bank-accounts/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/bank-accounts/create" },
-      { label: "Edit", path: "/30fev_docs.ts/bank-accounts/edit" },
-      { label: "Create Inactive", path: "/30fev_docs.ts/bank-accounts/create-inactive" },
-      { label: "Delete", path: "/30fev_docs.ts/bank-accounts/delete" },
-      { label: "Create Cash Transaction", path: "/30fev_docs.ts/bank-accounts/create-cash-transaction" },
-      { label: "Delete Failure", path: "/30fev_docs.ts/bank-accounts/delete-failure" },
+      { label: "Create", path: "/bank-accounts/create" },
+      { label: "Edit", path: "/bank-accounts/edit" },
+      { label: "Create Inactive", path: "/bank-accounts/create-inactive" },
+      { label: "Create Cash Transaction", path: "/bank-accounts/create-cash-transaction" },
+      { label: "Delete", path: "/bank-accounts/delete" },
     ],
   },
   {
     label: "User Cards",
     icon: CreditCard,
-    path: "/30fev_docs.ts/user-cards/create",
+    path: "/user-cards/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/user-cards/create" },
-      { label: "Edit", path: "/30fev_docs.ts/user-cards/edit" },
-      { label: "Create Card Transaction", path: "/30fev_docs.ts/user-cards/create-card-transaction" },
+      { label: "Create", path: "/user-cards/create" },
+      { label: "Edit", path: "/user-cards/edit" },
+      { label: "Create Card Transaction", path: "/user-cards/create-card-transaction" },
     ],
   },
   {
     label: "Categories",
     icon: FolderOpen,
-    path: "/30fev_docs.ts/categories/create",
+    path: "/categories/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/categories/create" },
-      { label: "Edit", path: "/30fev_docs.ts/categories/edit" },
-      { label: "Create Transaction", path: "/30fev_docs.ts/categories/create-transaction" },
-      { label: "Edit Transaction", path: "/30fev_docs.ts/categories/edit-transaction" },
+      { label: "Create", path: "/categories/create" },
+      { label: "Edit", path: "/categories/edit" },
+      { label: "Create Transaction", path: "/categories/create-transaction" },
+      { label: "Edit Transaction", path: "/categories/edit-transaction" },
     ],
   },
   {
     label: "Entities",
     icon: CircleUser,
-    path: "/30fev_docs.ts/entities/create",
+    path: "/entities/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/entities/create" },
-      { label: "Edit", path: "/30fev_docs.ts/entities/edit" },
-      { label: "Create Transaction", path: "/30fev_docs.ts/entities/create-transaction" },
-      { label: "Edit Transaction", path: "/30fev_docs.ts/entities/edit-transaction" },
+      { label: "Create", path: "/entities/create" },
+      { label: "Edit", path: "/entities/edit" },
+      { label: "Create Transaction", path: "/entities/create-transaction" },
+      { label: "Edit Transaction", path: "/entities/edit-transaction" },
     ],
   },
   {
     label: "Card Transactions",
     icon: WalletCards,
-    path: "/30fev_docs.ts/card-transactions/create",
+    path: "/card-transactions/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/card-transactions/create" },
-      { label: "Edit", path: "/30fev_docs.ts/card-transactions/edit" },
-      { label: "Reference Month Year", path: "/30fev_docs.ts/card-transactions/reference-month-year" },
-      { label: "Card Installments", path: "/30fev_docs.ts/card-transactions/card-installments" },
-      { label: "Card Payment", path: "/30fev_docs.ts/card-transactions/card-payment" },
-      { label: "Card Advance", path: "/30fev_docs.ts/card-transactions/card-advance" },
-      { label: "Entities", path: "/30fev_docs.ts/card-transactions/entities" },
-      { label: "Exchanges", path: "/30fev_docs.ts/card-transactions/exchanges" },
+      { label: "Create", path: "/card-transactions/create" },
+      { label: "Edit", path: "/card-transactions/edit" },
+      { label: "Reference Month Year", path: "/card-transactions/reference-month-year" },
+      { label: "Card Installments", path: "/card-transactions/card-installments" },
+      { label: "Card Payment", path: "/card-transactions/card-payment" },
+      { label: "Card Advance", path: "/card-transactions/card-advance" },
+      { label: "Entities", path: "/card-transactions/entities" },
+      { label: "Exchanges", path: "/card-transactions/exchanges" },
 
     ],
   },
   {
     label: "Cash Transactions",
     icon: Wallet,
-    path: "/30fev_docs.ts/cash-transactions/create",
+    path: "/cash-transactions/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/cash-transactions/create" },
-      { label: "Edit", path: "/30fev_docs.ts/cash-transactions/edit" },
-      { label: "Reference Month Year", path: "/30fev_docs.ts/cash-transactions/reference-month-year" },
-      { label: "Cash Installments", path: "/30fev_docs.ts/cash-transactions/cash-installments" },
-      { label: "Entities", path: "/30fev_docs.ts/cash-transactions/entities" },
-      { label: "Exchanges", path: "/30fev_docs.ts/cash-transactions/exchanges" },
+      { label: "Create", path: "/cash-transactions/create" },
+      { label: "Edit", path: "/cash-transactions/edit" },
+      { label: "Reference Month Year", path: "/cash-transactions/reference-month-year" },
+      { label: "Cash Installments", path: "/cash-transactions/cash-installments" },
+      { label: "Entities", path: "/cash-transactions/entities" },
+      { label: "Exchanges", path: "/cash-transactions/exchanges" },
     ],
   },
   {
     label: "Budgets",
     icon: PiggyBank,
-    path: "/30fev_docs.ts/budgets/create",
+    path: "/budgets/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/budgets/create" },
-      { label: "Edit", path: "/30fev_docs.ts/budgets/edit" },
-      { label: "Create Transaction", path: "/30fev_docs.ts/budgets/create-transaction" },
-      { label: "Edit Transaction", path: "/30fev_docs.ts/budgets/edit-transaction" },
-      { label: "Delete Transaction", path: "/30fev_docs.ts/budgets/delete-transaction" },
-      { label: "Exceed Limit", path: "/30fev_docs.ts/budgets/exceed-limit" },
+      { label: "Create", path: "/budgets/create" },
+      { label: "Edit", path: "/budgets/edit" },
+      { label: "Create Transaction", path: "/budgets/create-transaction" },
+      { label: "Edit Transaction", path: "/budgets/edit-transaction" },
+      { label: "Delete Transaction", path: "/budgets/delete-transaction" },
+      { label: "Exceed Limit", path: "/budgets/exceed-limit" },
     ],
   },
   {
     label: "Investments",
     icon: PiggyBank,
-    path: "/30fev_docs.ts/investments/create",
+    path: "/investments/create",
     children: [
-      { label: "Create", path: "/30fev_docs.ts/investments/create" },
-      { label: "Edit", path: "/30fev_docs.ts/investments/edit" },
+      { label: "Create", path: "/investments/create" },
+      { label: "Edit", path: "/investments/edit" },
     ],
   },
-  { label: "Donation", icon: HandCoins, path: "/30fev_docs.ts/donation" },
+  { label: "Donation", icon: HandCoins, path: "/donation" },
 ]
 
 export default function Sidebar({ collapsed, setCollapsed }: { collapsed: boolean; setCollapsed: (v: boolean) => void }) {
   const location = useLocation()
 
-  const isChildRouteActive = (parent: typeof item) => {
+  const isChildRouteActive = (parent: SidebarItem) => {
     if (parent.children) {
       return parent.children.some((child) => location.pathname === child.path)
     }
@@ -129,7 +136,6 @@ export default function Sidebar({ collapsed, setCollapsed }: { collapsed: boolea
 
       <nav className="space-y-2 px-2 py-4">
         {sidebarStructure.map((item, idx) => {
-          const Icon = item.icon
           const isActive = isChildRouteActive(item)
 
           return item.children ? (
@@ -138,20 +144,20 @@ export default function Sidebar({ collapsed, setCollapsed }: { collapsed: boolea
                 {collapsed ? (
                   <Link
                     to={item.path}
-                    className={`flex items-center justify-center px-3 py-2 rounded text-gray-700 hover:bg-gray-100 ${
+                    className={`flex items-center justify-center px-3 py-2 rounded text-gray-900 hover:bg-gray-100 ${
                       isActive ? "bg-gray-100 font-semibold" : "font-medium"
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
+                    {item.icon && <item.icon className="w-5 h-5" />}
                   </Link>
                 ) : (
                   <AccordionTrigger
-                    className={`flex justify-between items-center w-full px-3 py-2 rounded text-md text-gray-700 hover:no-underline hover:bg-gray-100 ${
+                    className={`flex justify-between items-center w-full px-3 py-2 rounded text-md text-gray-900 hover:no-underline hover:bg-gray-100 ${
                       isActive ? "bg-gray-100 font-semibold" : "font-medium"
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="w-5 h-5" />
+                      {item.icon && <item.icon className="w-5 h-5" />}
                       {item.label}
                     </div>
                   </AccordionTrigger>
@@ -177,9 +183,9 @@ export default function Sidebar({ collapsed, setCollapsed }: { collapsed: boolea
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-3 py-2 rounded text-gray-700 hover:bg-gray-100 ${isActive ? "bg-gray-100 font-semibold" : "font-medium"} ${collapsed ? "justify-center" : ""}`}
+              className={`flex items-center gap-3 px-3 py-2 rounded text-gray-900 hover:bg-gray-100 ${isActive ? "bg-gray-100 font-semibold" : "font-medium"} ${collapsed ? "justify-center" : ""}`}
             >
-              <Icon className="w-5 h-5" />
+              {item.icon && <item.icon className="w-5 h-5" />}
               {!collapsed && item.label}
             </Link>
           )
