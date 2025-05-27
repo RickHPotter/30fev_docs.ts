@@ -34,6 +34,7 @@ const sidebarStructure: SidebarItem[] = [
       { label: "Create", path: "/user-cards/create" },
       { label: "Edit", path: "/user-cards/edit" },
       { label: "Create Card Transaction", path: "/user-cards/create-card-transaction" },
+      { label: "Delete", path: "/user-cards/delete" },
     ],
   },
   {

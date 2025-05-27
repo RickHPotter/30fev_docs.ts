@@ -1,8 +1,9 @@
 import React from "react"
+import Video from "@/components/Video"
 
 const Signup: React.FC = () => (
   <section className="text-md md:text-lg">
-    <h2 className="text-2xl md:text-4xl font-semibold md:mb-2">🔐 How to Sign Up</h2>
+    <h1 className="text-2xl md:text-4xl font-extrabold text-slate-700 pb-4">🔐 HOW TO SIGN UP</h1>
     <p className="text-gray-700 py-4">
       To get started, a user needs to have an account. To do that, you need to Sign Up.
     </p>
@@ -31,16 +32,7 @@ const Signup: React.FC = () => (
       <li>Click on the <strong>Sign Up</strong> button.</li>
     </ul>
 
-    <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-    <div className="mb-4 rounded overflow-hidden shadow">
-      <video
-        src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-        muted
-        loop
-        playsInline
-        controls
-      />
-    </div>
+    < Video videoPath="01. Signup/en/01. Signup" />
   </section>
 )
 

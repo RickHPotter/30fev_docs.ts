@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { AlertCircle } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import Video from "@/components/Video"
 
 export default function BankAccounts() {
   const { section } = useParams()
@@ -106,16 +107,7 @@ const CreateSection = () => {
         </p>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-      <div className="mb-4 rounded overflow-hidden shadow">
-        <video
-          src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-          muted
-          loop
-          playsInline
-          controls
-        />
-      </div>
+      < Video videoPath="03. Basics/01. BankAccounts/en/01. Create" />
     </section>
   )
 }
@@ -160,16 +152,7 @@ const EditSection = () => {
         </p>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-      <div className="mb-4 rounded overflow-hidden shadow">
-        <video
-          src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-          muted
-          loop
-          playsInline
-          controls
-        />
-      </div>
+      < Video videoPath="03. Basics/01. BankAccounts/en/02. Edit" />
     </section>
   )
 }
@@ -178,6 +161,12 @@ const CreateInactiveSection = () => {
   return (
     <section id="create-inactive" className="scroll-mt-26 text-gray-900">
       <h1 className="text-2xl md:text-4xl font-extrabold text-slate-700 pb-4"># CREATE INACTIVE</h1>
+
+      <p className="py-2">
+        For the purpose of showcasing, we are creating some other Bank Accounts as you can see in the image below.
+      </p>
+
+      <img src="videos/03. Basics/01. BankAccounts/en/04. Create Other Bank Accounts.png" alt="Listing of Bank Accounts Newly Created" />
 
       <p className="py-2">
         A Bank Account, when created, can be chosen from the <strong>Cash Transaction</strong> form, unless they are inactive.
@@ -211,16 +200,7 @@ const CreateInactiveSection = () => {
         </p>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-      <div className="mb-4 rounded overflow-hidden shadow">
-        <video
-          src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-          muted
-          loop
-          playsInline
-          controls
-        />
-      </div>
+      < Video videoPath="03. Basics/01. BankAccounts/en/05. Create Inactive" />
     </section>
   )
 }
@@ -277,16 +257,7 @@ const CreateCashTransactionSection = () => {
         </p>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-      <div className="mb-4 rounded overflow-hidden shadow">
-        <video
-          src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-          muted
-          loop
-          playsInline
-          controls
-        />
-      </div>
+      < Video videoPath="03. Basics/01. BankAccounts/en/06. Create CashTransaction" />
     </section>
   )
 }
@@ -341,16 +312,8 @@ const DeleteSection = () => {
         </p>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2 mt-4">🎬 You can watch the video below to learn step by step.</h2>
-      <div className="mb-4 rounded overflow-hidden shadow">
-        <video
-          src={`${import.meta.env.BASE_URL}/videos/signup/01. Signup.mp4`}
-          muted
-          loop
-          playsInline
-          controls
-        />
-      </div>
+      < Video videoPath="03. Basics/01. BankAccounts/en/03. Create - Delete" subtitle="Delete Success"/>
+      < Video videoPath="03. Basics/01. BankAccounts/en/07. Delete Failure Because UserBankAccount Has Transactions" title=" " subtitle="Delete Failure" />
     </section>
   )
 }
