@@ -34,7 +34,7 @@ const CreateSection = () => {
 
       <p className="py-2">
         A Bank Account is an arrangement made between a <strong>bank</strong> and a <strong>
-          client</strong> where the <strong>client</strong> can deposit and withdraw his funds.
+        client</strong> where the <strong>client</strong> can deposit and withdraw his funds.
       </p>
 
       <p className="py-2">
@@ -46,14 +46,19 @@ const CreateSection = () => {
         <Alert variant="destructive">
           <AlertCircle className="size-4 mt-1" />
 
-          <AlertTitle>
-            <span className="text-lg">
-            At the moment, it is <strong>NOT</strong> recommended to create transactions between your own accounts.
-            </span>
-          </AlertTitle>
+          <span className="hidden md:block text-lg">
+            <AlertTitle>
+              At the moment, it is <strong>NOT</strong> recommended to create transactions between your own accounts.
+            </AlertTitle>
+          </span>
+
 
           <AlertDescription>
-            <span className="text-slate-600 text-lg">
+            <span className="block md:hidden text-md md:text-lg">
+              At the moment, it is <strong>NOT</strong> recommended to create transactions between your own accounts.
+            </span>
+
+            <span className="text-slate-600 text-md md:text-lg">
               For example, moving your own money from bank A to bank B should not be registered in this system, and if done so,
               we do <strong>NOT</strong> guarantee that processes work smoothly as they should.
               And even if they do, the complexity introduced to the system is very likely uncalled for.
@@ -65,7 +70,6 @@ const CreateSection = () => {
           </AlertDescription>
         </Alert>
       </div>
-
 
       <ul className="list-disc list-inside space-y-1">
         <li>Navigate to <strong>Basics</strong> from the first row of the top menu.</li>
@@ -119,8 +123,8 @@ const EditSection = () => {
 
       <p className="py-2">
         A Bank Account can be edited thoroughly. When it is edited, everything attached to it should also be edited.
-        So if a Bank Account named <strong>Ace</strong> becomes <strong>Apex</strong>, every <strong>Cash Transaction</strong>
-        that was created with <strong>Ace</strong> will now become <strong>Apex</strong>.
+        So if a Bank Account named <strong>Ace</strong> becomes <strong>Apex</strong>, every <strong>Cash Transaction
+        </strong> that was created with <strong>Ace</strong> will now become <strong>Apex</strong>.
       </p>
 
       <p className="py-2">
@@ -271,15 +275,19 @@ const DeleteSection = () => {
         <Alert variant="destructive">
           <AlertCircle className="size-4 mt-1" />
 
-          <AlertTitle>
-            <span className="text-lg">
+          <span className="text-lg hidden md:block">
+            <AlertTitle>
               A Bank Account can only be deleted if there are no <strong>Cash Transactions</strong> associated with it.
-            </span>
-          </AlertTitle>
+            </AlertTitle>
+          </span>
 
           <AlertDescription>
-            <span className="text-slate-600 text-lg">
-              In case, the user still wishes to delete it, he will have to do one of the following:
+            <span className="block md:hidden text-md md:text-lg">
+              A Bank Account can only be deleted if there are no <strong>Cash Transactions</strong> associated with it.
+            </span>
+
+            <span className="text-slate-600 text-md md:text-lg">
+              If that is not the case and the user still wishes to delete it, he will have to do one of the following:
 
               <ul className="list-disc list-inside space-y-1">
                 <li>Delete all the <strong>Cash Transactions</strong> associated with it.</li>
@@ -289,11 +297,6 @@ const DeleteSection = () => {
           </AlertDescription>
         </Alert>
       </div>
-
-      <p className="py-2">
-        On <strong>30/Fev</strong>, a <strong>Bank Account</strong> functions in a similar way,
-        but mainly used to store the source or destination of a <strong>Cash Transaction</strong>.
-      </p>
 
       <ul className="list-disc list-inside space-y-1">
         <li>Navigate to <strong>Basics</strong> from the first row of the top menu.</li>

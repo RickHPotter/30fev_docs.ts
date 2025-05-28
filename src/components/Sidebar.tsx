@@ -142,54 +142,49 @@ export default function Sidebar({ collapsed, setCollapsed }: { collapsed: boolea
           return item.children ? (
             <Accordion key={idx} type="single" collapsible className="w-full" defaultValue={isActive ? item.label : undefined} >
               <AccordionItem value={item.label}>
-                {collapsed ? (
-                  <Link
-                    to={item.path}
-                    className={`flex items-center justify-center px-3 py-2 rounded text-gray-900 hover:bg-gray-100 ${
-                      isActive ? "bg-gray-100 font-semibold" : "font-medium"
-                    }`}
-                  >
+                <AccordionTrigger
+                  className={`w-full px-3 py-2 rounded hover:no-underline hover:bg-gray-100 text-gray-900
+                              ${collapsed ? "flex flex-col items-center gap-1" : "flex justify-between items-center"}
+                              ${isActive ? "bg-gray-100 font-semibold" : "font-medium"}`}
+                >
+                  <div className={`flex ${collapsed ? "flex-col items-center" : "flex-row items-center gap-3"}`}>
                     {item.icon && <item.icon className="w-5 h-5" />}
-                  </Link>
-                ) : (
-                  <AccordionTrigger
-                    className={`flex justify-between items-center w-full px-3 py-2 rounded text-md text-gray-900 hover:no-underline hover:bg-gray-100 ${
-                      isActive ? "bg-gray-100 font-semibold" : "font-medium"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      {item.icon && <item.icon className="w-5 h-5" />}
+                    <span className={`${collapsed ? "text-[6px] leading-tight text-center" : ""}`}>
                       {item.label}
-                    </div>
-                  </AccordionTrigger>
-                )}
+                    </span>
+                  </div>
+                </AccordionTrigger>
 
-                <AccordionContent className="pl-4">
-                  {!collapsed &&
-                    item.children.map((child) => (
-                      <Link
-                        key={child.path}
-                        to={child.path}
-                        className={`block px-3 py-1.5 m-0.5 rounded text-sm text-gray-600 hover:bg-gray-100 ${
-                          location.pathname === child.path ? "bg-gray-100 font-semibold" : ""
-                        }`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                <AccordionContent className={`${collapsed ? "" : "pl-4"}`}>
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.path}
+                      to={child.path}
+                      className={`block px-3 py-1.5 m-0.5 rounded text-sm text-gray-600 hover:bg-gray-100 
+                                  ${location.pathname === child.path ? "bg-gray-100 font-semibold" : ""}
+                                  ${collapsed ? "text-[6px]" : ""}`}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           ) : (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`flex items-center gap-3 px-3 py-2 rounded text-gray-900 hover:bg-gray-100 ${isActive ? "bg-gray-100 font-semibold" : "font-medium"} ${collapsed ? "justify-center" : ""}`}
-            >
-              {item.icon && <item.icon className="w-5 h-5" />}
-              {!collapsed && item.label}
-            </Link>
-          )
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`flex flex-col items-center gap-1 px-3 py-2 rounded text-gray-900 hover:bg-gray-100
+                           ${isActive ? "bg-gray-100 font-semibold" : "font-medium" }
+                           ${collapsed ? "w-full" : "flex-row gap-3 justify-start"}`}
+              >
+                {item.icon && <item.icon className="w-5 h-5" />}
+                <span className={`${collapsed ? "text-[6px] leading-tight text-center" : "hidden"}`}>
+                  {item.label}
+                </span>
+                {!collapsed && <span>{item.label}</span>}
+              </Link>
+            )
         })}
       </nav>
     </aside>
